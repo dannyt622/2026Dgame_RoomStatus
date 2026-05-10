@@ -73,15 +73,6 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-.sync {
-  flex: 0 0 auto;
-  min-width: 9.5rem;
-  margin: 4px 0 0;
-  color: var(--muted);
-  font-size: 0.88rem;
-  text-align: right;
-}
-
 .room-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -235,11 +226,6 @@ h1 {
 
   .topbar {
     display: block;
-  }
-
-  .sync {
-    margin-top: 10px;
-    text-align: left;
   }
 
   .room-grid {

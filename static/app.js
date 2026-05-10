@@ -1,6 +1,5 @@
 const config = window.ROOM_TIMER_CONFIG;
 const app = document.querySelector("#app");
-const syncStatus = document.querySelector("#syncStatus");
 let rooms = [];
 let activeRoom = null;
 let renderTimer = null;
@@ -22,10 +21,6 @@ function secondsUntil(endsAt) {
 
 function roomIsInUse(room) {
   return room.status === "in_use" && secondsUntil(room.ends_at) > 0;
-}
-
-function setSync(text) {
-  syncStatus.textContent = text;
 }
 
 async function requestJson(url, options = {}) {
@@ -92,14 +87,12 @@ function render() {
 async function loadDashboard() {
   const data = await requestJson("/api/rooms");
   rooms = data.rooms;
-  setSync(`已更新 ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`);
   render();
 }
 
 async function loadStaffRoom() {
   const data = await requestJson(`/api/rooms/${config.roomId}`);
   activeRoom = data.room;
-  setSync(`已更新 ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`);
   render();
 }
 
@@ -132,7 +125,6 @@ async function poll() {
     }
   } catch (error) {
     console.error(error);
-    setSync("連線中斷");
   }
 }
 
@@ -141,14 +133,12 @@ app.addEventListener("click", (event) => {
   if (action === "start") {
     startRoom().catch((error) => {
       console.error(error);
-      setSync("開始失敗");
       poll();
     });
   }
   if (action === "end") {
     endRoom().catch((error) => {
       console.error(error);
-      setSync("結束失敗");
       poll();
     });
   }

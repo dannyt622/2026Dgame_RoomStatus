@@ -168,7 +168,6 @@ def page_template(title: str, body_class: str, app_config: dict[str, object]) ->
         <p class="eyebrow">活動房間</p>
         <h1>{title}</h1>
       </div>
-      <p class="sync" id="syncStatus">連線中</p>
     </header>
     <section id="app" aria-live="polite"></section>
   </main>
