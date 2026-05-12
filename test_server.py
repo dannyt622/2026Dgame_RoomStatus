@@ -19,18 +19,17 @@ class RoomTimerTests(unittest.TestCase):
         server.DB_PATH = self.original_db_path
         self.temp_dir.cleanup()
 
-    def test_initializes_six_available_rooms(self) -> None:
+    def test_initializes_named_available_rooms(self) -> None:
         rooms = server.get_rooms()
-        self.assertEqual(len(rooms), 6)
+        self.assertEqual(len(rooms), 5)
         self.assertEqual(
             [room["name"] for room in rooms],
             [
-                "助手的車",
-                "教授房間",
-                "助手房間",
-                "教授老婆房間",
-                "男學生房間",
-                "秘書房間",
+                "希子陽宿舍",
+                "文同恩Office",
+                "李耀西Lab",
+                "柯穎慈書房",
+                "歐陽達名Office",
             ],
         )
         self.assertTrue(all(room["status"] == "available" for room in rooms))

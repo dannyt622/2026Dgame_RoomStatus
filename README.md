@@ -1,6 +1,6 @@
 # Event Room Timer
 
-A small, dependency-free Python website for managing six 15-minute event rooms.
+A small, dependency-free Python website for managing five 15-minute event rooms.
 
 ## Run
 
@@ -11,7 +11,7 @@ python3 server.py
 Open:
 
 - Dashboard: <http://127.0.0.1:8001/>
-- Staff room pages: <http://127.0.0.1:8001/staff/room/1> through `/staff/room/6`
+- Staff room pages: <http://127.0.0.1:8001/staff/room/1> through `/staff/room/5`
 
 Room state is stored in `room_status.sqlite3`. The app stores `started_at` and `ends_at`, then calculates remaining time from the current time on each request.
 
@@ -26,7 +26,6 @@ Staff should open only their assigned room URL:
 - Room 3: `/staff/room/3`
 - Room 4: `/staff/room/4`
 - Room 5: `/staff/room/5`
-- Room 6: `/staff/room/6`
 
 ## Deploy on Render
 

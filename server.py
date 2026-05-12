@@ -15,12 +15,11 @@ BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = Path(os.environ.get("DB_PATH", BASE_DIR / "room_status.sqlite3"))
 STATIC_DIR = BASE_DIR / "static"
 ROOM_NAMES = [
-    "助手的車",
-    "教授房間",
-    "助手房間",
-    "教授老婆房間",
-    "男學生房間",
-    "秘書房間",
+    "希子陽宿舍",
+    "文同恩Office",
+    "李耀西Lab",
+    "柯穎慈書房",
+    "歐陽達名Office",
 ]
 ROOM_COUNT = len(ROOM_NAMES)
 SESSION_MINUTES = 15
@@ -65,6 +64,7 @@ def init_db() -> None:
                 "UPDATE rooms SET name = ? WHERE id = ?",
                 (room_name, room_id),
             )
+        db.execute("DELETE FROM rooms WHERE id > ?", (ROOM_COUNT,))
 
 
 def expire_finished_rooms(db: sqlite3.Connection) -> None:
